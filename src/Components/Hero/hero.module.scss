@@ -1,0 +1,13 @@
+.defaultHero,
+.roomsHero {
+  min-height: calc(100vh - 66px);
+  background: url("https://savoywestend.cz/upload/resize_cache/iblock/c2a/1920_1920_1/c2acd3ad439d1a1de15590603f16612c.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roomsHero {
+  background: url("https://savoywestend.cz/upload/resize_cache/iblock/418/1200_600_2/418f578ba4bd18434d2dfa71d05429d1.jpg");
+  min-height: 60vh;
+}

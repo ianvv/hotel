@@ -1,0 +1,11 @@
+.loadingArrow {
+  text-align: center;
+
+  &:first-letter {
+    text-transform: capitalize;
+  }
+
+  img {
+    width: 30px;
+  }
+}

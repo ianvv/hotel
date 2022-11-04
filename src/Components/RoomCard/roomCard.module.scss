@@ -1,0 +1,64 @@
+.room {
+  box-shadow: 2px 5px 3px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.3s linear;
+  cursor: pointer;
+
+  .roomLink {
+    text-decoration: none;
+    color: black;
+
+    .imgContainer {
+      position: relative;
+
+      img {
+        width: 100%;
+        display: block;
+        transition: all 0.3s linear;
+      }
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .priceTop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 0 0.6rem 0.5rem;
+        border-bottom-right-radius: 1rem;
+        font-size: 0.5rem;
+        text-align: center;
+        transition: all 0.3s linear;
+
+        h6 {
+          margin-bottom: 0;
+          font-size: 0.9rem;
+          font-weight: 300;
+          letter-spacing: 3px;
+        }
+      }
+    }
+
+    .roomInfo {
+      text-transform: capitalize;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+  }
+}
+
+
+.imgContainer:hover img {
+  opacity: 0.2;
+}
+
+.imgContainer:hover .priceTop {
+  opacity: 0;
+}
+
+.imgContainer:hover .roomLink {
+  transform: translate(-50%, -50%) scale(1);
+}

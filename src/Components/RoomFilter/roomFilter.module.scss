@@ -1,0 +1,127 @@
+.filterForm {
+  width: 90vw;
+  margin: 0 auto;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(202px, 1fr));
+  grid-row-gap: 2rem;
+  grid-column-gap: 30px;
+
+  .sliderWrapper {
+    padding-left: 10px;
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+
+    label {
+      position: absolute;
+      display: block;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+
+      &:first-letter {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+
+  .formGroup {
+
+    &:first-letter {
+      text-transform: capitalize;
+    }
+
+    label {
+      display: block;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+
+      &:first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+    .formControl {
+      background: transparent;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .sizeInputs {
+      display: flex;
+    }
+
+    .sizeInput {
+      width: 40%;
+      padding: 0.2rem;
+      border: 1px solid #222;
+      border-radius: 0.3rem;
+      margin-right: 0.3rem;
+    }
+
+    .singleExtra {
+
+
+      input {
+        cursor: pointer;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .filterButtons {
+    width: 119px;
+
+    .filterButton {
+      display: block;
+      text-decoration: none;
+      letter-spacing: 1.2px;
+      color: #222;
+      background: #af9a7d;
+      padding: 5px 5px;
+      border: 1.5px solid #af9a7d;
+      border-radius: 10px;
+      transition: all 0.2s linear;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-right: 5px;
+
+      &:first-child {
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        background: transparent;
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: auto;
+
+        &:hover {
+          background: #af9a7d;
+        }
+      }
+    }
+  }
+
+
+  @media screen and (min-width: 776px) {
+    .filterForm {
+      width: 70vw;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .filterForm {
+      width: 95vw;
+      max-width: 1170px;
+    }
+  }
+}
