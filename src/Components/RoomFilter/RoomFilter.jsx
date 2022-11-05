@@ -40,9 +40,9 @@ const RoomFilter = ({rooms}) => {
                    && sliderValue === minPrice
                    && minSizeValue === minSize
                    && maxSize === maxSizeValue
-                   && breakfast === false
-                   && pets === false
-                   && smoking === false
+                   && !breakfast
+                   && !pets
+                   && !smoking
 
     const capacityChangeHandler = (e) => {
         setCapacityOption(e);
@@ -98,7 +98,7 @@ const RoomFilter = ({rooms}) => {
                 <div className={s.formGroup}>
                     <label htmlFor="price">room price ${sliderValue}</label>
                     <Slider
-                        style={{width: 200, color: '#af9a7d', marginLeft: '10px'}}
+                        className={s.slider}
                         value={sliderValue}
                         min={minPrice}
                         max={maxPrice}

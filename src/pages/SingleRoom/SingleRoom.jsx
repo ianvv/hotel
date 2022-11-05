@@ -16,7 +16,7 @@ const SingleRoom = () => {
     const {slug} = useParams();
 
     useEffect(() => {
-        const getSingleRoom = async () => {
+        const getSingleRoom = () => {
             dispatch(fetchRoom(slug));
         }
         getSingleRoom();

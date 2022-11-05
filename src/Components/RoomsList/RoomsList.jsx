@@ -20,14 +20,14 @@ const RoomsList = ({rooms}) => {
     const minSize = Math.min.apply(null, [...rooms.map(item => item.size)]);
 
     useEffect(() => {
-        const getRooms = async () => {
+        const getRooms = () => {
             dispatch(fetchRooms());
         }
         getRooms();
     }, []);
 
     useEffect(() => {
-        const setFilterParams = async () => {
+        const setFilterParams = () => {
             dispatch(setMaxPrice(maxPrice));
             dispatch(setMinPrice(minPrice));
             dispatch(setMinSize(minSize));
@@ -57,16 +57,16 @@ const RoomsList = ({rooms}) => {
             </div>
             <div className={s.paginationWrapper}>
                 {
-                    status === loadingStatus.LOADING
-                        ? <div></div>
-                        : sortedRooms.length < 6 ? <div></div> : <button
-                            className={s.paginationButton}
-                            onClick={showMoreRooms}
-                            // Here instead of 5 should be 6 but in my API are only 11 items
-                            disabled={visible + 5 - rooms.length > 0}
-                        >
-                            Load more rooms
-                        </button>
+                    status !== loadingStatus.LOADING
+                    && sortedRooms.length > 6
+                    && <button
+                        className={s.paginationButton}
+                        onClick={showMoreRooms}
+                        // Here instead of 5 should be 6 but in my API are only 11 items
+                        disabled={visible + 5 - rooms.length > 0}
+                    >
+                        Load more rooms
+                    </button>
                 }
             </div>
         </section>
