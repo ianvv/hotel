@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import RoomCard from "../RoomCard/RoomCard";
 import Loading from "../Loading/Loading";
-import {fetchRooms, loadingStatus, roomsSelector} from "../../redux/slices/RoomsSlice";
+import {useAppDispatch} from "../../redux/store";
+import {fetchRooms, roomsSelector, Status} from "../../redux/slices/RoomsSlice";
 import {setMaxPrice, setMaxSize, setMinPrice, setMinSize} from "../../redux/slices/FilterSlice";
 import s from './roomsList.module.scss';
+import {RoomFilterProps} from "../RoomFilter/RoomFilter";
 
 
-const RoomsList = ({rooms}) => {
+const RoomsList: React.FC<RoomFilterProps>  = ({rooms}) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {status, sortedRooms} = useSelector(roomsSelector);
     const [visible, setVisible] = useState(6);
 
@@ -33,7 +35,7 @@ const RoomsList = ({rooms}) => {
             dispatch(setMinSize(minSize));
             dispatch(setMaxSize(maxSize));
         }
-        status === loadingStatus.SUCCESS && setFilterParams();
+        status === Status.SUCCESS && setFilterParams();
     }, [status]);
 
     const showMoreRooms = () => {
@@ -50,14 +52,14 @@ const RoomsList = ({rooms}) => {
         <section className={s.roomsList}>
             <div className={s.roomsListCenter}>
                 {
-                    status === loadingStatus.LOADING
+                    status === Status.LOADING
                         ? <Loading text='Rooms loading...'/>
                         : roomItems
                 }
             </div>
             <div className={s.paginationWrapper}>
                 {
-                    status !== loadingStatus.LOADING
+                    status !== Status.LOADING
                     && sortedRooms.length > 6
                     && <button
                         className={s.paginationButton}

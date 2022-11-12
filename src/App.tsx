@@ -1,4 +1,5 @@
 import {Routes, Route} from "react-router-dom";
+import React, {ReactNode} from 'react';
 
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
@@ -7,9 +8,14 @@ import Error from "./pages/Error";
 import MainLayout from "./layouts/MainLayout";
 
 
-const routes = [
+type RouteItem = {
+    path: string;
+    element: ReactNode;
+}
+
+const routes: RouteItem[] = [
     {
-        path: '/',
+        path: '',
         element: <Home/>
     },
     {
@@ -34,7 +40,7 @@ function App() {
                 {
                     routes.map((route, index) => {
                         return (
-                            <Route key={index} path={route.path} element={route.element}/>
+                            <Route key={index} {...route}/>
                         )
                     })
                 }

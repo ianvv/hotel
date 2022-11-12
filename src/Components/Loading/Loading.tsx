@@ -4,7 +4,12 @@ import loadingArrow from '../../assets/img/gif/loading-arrow.gif';
 import s from './loading.module.scss';
 
 
-const Loading = ({text}) => {
+interface ILoadingProps {
+    text: string;
+}
+
+
+const Loading: React.FC<ILoadingProps> = ({text}) => {
 
     return (
         <div className={s.loadingArrow}>

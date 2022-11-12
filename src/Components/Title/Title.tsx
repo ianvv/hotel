@@ -2,7 +2,11 @@ import React from 'react';
 import s from './title.module.scss';
 
 
-const Title = ({title}) => {
+interface ITitleProps {
+    title: string;
+}
+
+const Title: React.FC<ITitleProps> = ({title}) => {
 
     return (
         <div className={s.sectionTitle}>

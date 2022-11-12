@@ -1,25 +1,36 @@
 import React, {useEffect, useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import Select from "react-select";
 import {Slider} from "@mui/material";
+import {SingleValue} from "react-select/dist/declarations/src/types";
 
 import Title from "../Title/Title";
-import {setSortedRooms} from "../../redux/slices/RoomsSlice";
+import {RoomItem, setSortedRooms} from "../../redux/slices/RoomsSlice";
 import {filterSelector} from "../../redux/slices/FilterSlice";
+import {useAppDispatch} from "../../redux/store";
 import {getUnique} from "../../utilities/sideFunctions";
 import s from './roomFilter.module.scss';
 
 
+type CapacityOption = {
+    label: number;
+    value: number;
+}
+
+export interface RoomFilterProps {
+    rooms: RoomItem[];
+}
+
 // The best way to implement this would be to use
 // an API request with parameters, but I couldn't
 // do it properly because I don't have a good enough API
-// So I had to use the array filter method
-const RoomFilter = ({rooms}) => {
+// so I had to use the array filter method
+export const RoomFilter: React.FC<RoomFilterProps> = ({rooms}) => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {minPrice, maxPrice, minSize, maxSize} = useSelector(filterSelector);
 
-    const [capacityOption, setCapacityOption] = useState(0);
+    const [capacityOption, setCapacityOption] = useState<CapacityOption | null>(null);
     const [capacity, setCapacity] = useState(0);
     const [sliderValue, setSliderValue] = useState(minPrice);
     const [minSizeValue, setMinSizeValue] = useState(minSize);
@@ -37,23 +48,17 @@ const RoomFilter = ({rooms}) => {
     let tempRooms = [...rooms];
 
     const resetDisabled = capacity === 0
-                   && sliderValue === minPrice
-                   && minSizeValue === minSize
-                   && maxSize === maxSizeValue
-                   && !breakfast
-                   && !pets
-                   && !smoking
+        && sliderValue === minPrice
+        && minSizeValue === minSize
+        && maxSize === maxSizeValue
+        && !breakfast
+        && !pets
+        && !smoking
 
-    const capacityChangeHandler = (e) => {
-        setCapacityOption(e);
-        setCapacity(e.value);
+    const capacityChangeHandler = (option: SingleValue<CapacityOption>) => {
+        setCapacityOption(option);
+        setCapacity(option ? option.value : 0);
     }
-
-    let guests = getUnique(rooms, 'capacity');
-
-    const options = guests.map(item => {
-        return {label: item, value: item};
-    })
 
     const onClickButton = () => {
         tempRooms = tempRooms.filter(room =>
@@ -70,7 +75,7 @@ const RoomFilter = ({rooms}) => {
 
     const resetButton = () => {
         let tempRooms = [...rooms];
-        setCapacityOption(0);
+        setCapacityOption(null);
         setCapacity(0);
         setSliderValue(minPrice);
         setMinSizeValue(minSize);
@@ -81,6 +86,16 @@ const RoomFilter = ({rooms}) => {
         dispatch(setSortedRooms(tempRooms));
     }
 
+    if (rooms.length <= 0) {
+        return <></>
+    }
+
+    let guests = getUnique(rooms, 'capacity');
+
+    const options: CapacityOption[] = guests.map(item => {
+        return { label: Number(item), value: Number(item) };
+    })
+
     return (
         <>
             <Title title='search rooms'/>
@@ -88,11 +103,9 @@ const RoomFilter = ({rooms}) => {
                 <div className={s.formGroup}>
                     <label htmlFor="capacity">Capacity</label>
                     <Select
-                        label='Capacity'
                         options={options}
                         value={capacityOption}
                         onChange={capacityChangeHandler}
-                        style={{cursor: 'pointer'}}
                     />
                 </div>
                 <div className={s.formGroup}>
@@ -102,7 +115,7 @@ const RoomFilter = ({rooms}) => {
                         value={sliderValue}
                         min={minPrice}
                         max={maxPrice}
-                        onChange={(e) => setSliderValue(e.target.value)}
+                        onChange={(_, value) => setSliderValue(value as number)}
                     />
                 </div>
                 <div className={s.formGroup}>
@@ -116,7 +129,7 @@ const RoomFilter = ({rooms}) => {
                             max={maxSize}
                             id="minSize"
                             value={minSizeValue}
-                            onChange={(e) => setMinSizeValue(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinSizeValue(Number(e.target.value))}
                         />
                         <input
                             className={s.sizeInput}
@@ -126,7 +139,7 @@ const RoomFilter = ({rooms}) => {
                             min={minSize}
                             max={maxSize}
                             value={maxSizeValue}
-                            onChange={(e) => setMaxSizeValue(e.target.value)}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaxSizeValue(Number(e.target.value))}
                         />
                     </div>
                 </div>
@@ -182,5 +195,3 @@ const RoomFilter = ({rooms}) => {
         </>
     );
 }
-
-export default RoomFilter;

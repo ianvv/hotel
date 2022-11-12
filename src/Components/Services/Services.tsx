@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {FaCocktail, FaHiking, FaShuttleVan, FaBeer} from 'react-icons/fa';
 
 import Title from "../Title/Title";
 import s from './services.module.scss';
 
 
-const services = [
+type IServicesItem = {
+    icon: ReactNode;
+    title: string;
+    info: string;
+}
+
+const services: IServicesItem[] = [
     {
         icon: <FaCocktail/>,
         title: 'Free cocktails',
@@ -29,7 +35,7 @@ const services = [
 ];
 
 
-const Services = () => {
+const Services: React.FC = () => {
 
     return (
         <section className={s.services}>

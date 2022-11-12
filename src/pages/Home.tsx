@@ -8,7 +8,7 @@ import FeaturedRooms from "../Components/FeaturedRooms/FeaturedRooms";
 import s from '../assets/styles/commonStyles.module.scss';
 
 
-const Home = () => {
+const Home: React.FC = () => {
 
     return (
         <>

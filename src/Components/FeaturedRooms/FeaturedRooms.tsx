@@ -1,42 +1,46 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import Title from "../Title/Title";
 import RoomCard from "../RoomCard/RoomCard";
 import Loading from "../Loading/Loading";
-import {fetchRooms, roomsSelector} from "../../redux/slices/RoomsSlice";
+import {useAppDispatch} from "../../redux/store";
+import {fetchRooms, RoomItem, roomsSelector} from "../../redux/slices/RoomsSlice";
 import s from './featuredRooms.module.scss';
 
 
 const FeaturedRooms = () => {
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {rooms} = useSelector(roomsSelector);
 
     useEffect(() => {
-        const getRooms = async () => {
+        const getRooms = () => {
             dispatch(fetchRooms());
         }
         getRooms();
     }, []);
 
-    let nums = new Set();
+    const featuredRoomsArray: RoomItem[] = [];
+
+    let nums = new Set<number>();
+
     while(nums.size !== 3) {
-        nums.add(Math.floor(Math.random() * 10) + 1);
+        nums.add(Math.floor(Math.random() * 11));
     }
 
-    nums = [...nums];
+    const convertedArray = Array.from(nums);
 
-    nums.map((item) => {
-        const particularObj = rooms[item];
-        nums.push(particularObj);
+    convertedArray.map((num) => {
+        const particularObj = rooms[num];
+        featuredRoomsArray.push(particularObj);
     })
 
-    if (!nums[5]) {
+    if (!featuredRoomsArray[2]) {
         return <Loading text='Featured rooms loading...'/>;
     }
 
-    const roomItems =  nums.slice(3,6).map(room => <RoomCard key={room.id} {...room}/>);
+    const roomItems =  featuredRoomsArray.map(room => <RoomCard key={room.id} {...room}/>);
 
     return (
         <section className={s.featuredRooms}>

@@ -8,7 +8,7 @@ import s from '../assets/styles/commonStyles.module.scss';
 import styles from '../Components/Hero/hero.module.scss';
 
 
-const Rooms = () => {
+const Rooms: React.FC = () => {
 
     return (
         <>

@@ -5,7 +5,7 @@ import Header from "../Components/Header/Header";
 import '../App.css';
 
 
-const MainLayout = () => {
+const MainLayout: React.FC = () => {
 
     return (
         <>

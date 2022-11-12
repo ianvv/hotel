@@ -1,9 +1,10 @@
 import React, {useEffect} from 'react';
 import {Link, useParams} from 'react-router-dom';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import Loading from "../../Components/Loading/Loading";
-import {fetchRoom, loadingStatus, roomsSelector} from "../../redux/slices/RoomsSlice";
+import {fetchRoom, roomsSelector, Status} from "../../redux/slices/RoomsSlice";
+import {useAppDispatch} from '../../redux/store';
 import {StyledWrapper} from "../../assets/styles/styledComponents";
 import s from './singleRoom.module.scss';
 import styles from '../../assets/styles/commonStyles.module.scss';
@@ -12,12 +13,12 @@ import styles from '../../assets/styles/commonStyles.module.scss';
 const SingleRoom = () => {
 
     const {singleRoom, status} = useSelector(roomsSelector);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const {slug} = useParams();
 
     useEffect(() => {
         const getSingleRoom = () => {
-            dispatch(fetchRoom(slug));
+            dispatch(fetchRoom(String(slug)));
         }
         getSingleRoom();
     }, []);
@@ -27,7 +28,7 @@ const SingleRoom = () => {
     return (
         <>
             {
-                status === loadingStatus.LOADING
+                status === Status.LOADING
                     ? <Loading text='Room data loading...'/>
                     : <div>
                         <StyledWrapper images={images}>

@@ -6,7 +6,7 @@ import Banner from "../Components/Banner/Banner";
 import s from '../assets/styles/commonStyles.module.scss';
 
 
-const Error = () => {
+const Error: React.FC = () => {
 
     return (
         <Hero>

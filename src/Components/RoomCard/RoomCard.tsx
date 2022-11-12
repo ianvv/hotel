@@ -4,7 +4,15 @@ import {Link} from "react-router-dom";
 import s from './roomCard.module.scss';
 
 
-const RoomCard = ({name, slug, images, price}) => {
+interface IRoomCardProps {
+    name: string;
+    slug: string;
+    images: string[];
+    price: number;
+}
+
+
+const RoomCard: React.FC<IRoomCardProps> = ({name, slug, images, price}) => {
 
     return (
         <article className={s.room}>

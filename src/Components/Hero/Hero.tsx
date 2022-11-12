@@ -2,7 +2,13 @@ import React from 'react';
 import s from './hero.module.scss';
 
 
-const Hero = ({children, hero}) => {
+interface IHeroProps {
+    children: React.ReactNode;
+    hero?: string;
+}
+
+
+const Hero: React.FC<IHeroProps> = ({children, hero}) => {
 
     return (
         <div className={ hero ? hero : s.defaultHero}>

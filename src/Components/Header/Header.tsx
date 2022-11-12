@@ -5,29 +5,37 @@ import {Sling as Hamburger} from 'hamburger-react';
 import s from './header.module.scss';
 
 
-const navItems = [
+type NavItem = {
+    name: string,
+    toLink: string
+}
+
+const navItems: NavItem[] = [
     {name: 'Home', toLink: '/'},
     {name: 'Rooms', toLink: '/rooms'},
 ];
 
+type MenuClick = MouseEvent & {
+    path: Node[];
+};
 
-const Header = () => {
+
+const Header: React.FC = () => {
 
     const [isOpen, setOpen] = useState(false);
-    const menuRef = useRef(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const clickOutsideHandler = (e) => {
-            if (!menuRef.current.contains(e.target)) {
+        const clickOutsideHandler = (event: MouseEvent) => {
+            const _event = event as MenuClick;
+
+            if (menuRef.current && !_event.path.includes(menuRef.current)) {
                 setOpen(false);
             }
-        }
+        };
+        document.body.addEventListener("mousedown", clickOutsideHandler);
 
-        document.addEventListener("mousedown", clickOutsideHandler);
-
-        return () => {
-            document.removeEventListener("mousedown", clickOutsideHandler);
-        }
+        return () => document.body.removeEventListener("mousedown", clickOutsideHandler);
     }, []);
 
     return (
@@ -37,15 +45,16 @@ const Header = () => {
                     className={s.logo}
                     onClick={() => isOpen && setOpen(false)}
                 >
-                    <img src='https://savoywestend.cz/upload/iblock/b01/b014a613ff64eaf9de97eecd75029310.png' alt="Beach Resort logo"/>
+                    <img
+                        src='https://savoywestend.cz/upload/iblock/b01/b014a613ff64eaf9de97eecd75029310.png'
+                        alt="Hotel logo"
+                    />
                 </div>
                 <nav className={s.fullScreenNavbar}>
                     <ul>
                         {
                             navItems.map((obj, index) => <li
-                                onClick={() => {
-                                    setOpen(false)
-                                }}
+                                onClick={() => setOpen(false)}
                                 key={index}
                             >
                                 <Link to={obj.toLink}>{obj.name}</Link>
@@ -65,9 +74,7 @@ const Header = () => {
             >
                 {
                     navItems.map((obj, index) => <li
-                        onClick={() => {
-                            setOpen(false)
-                        }}
+                        onClick={() => setOpen(false)}
                         key={index}
                     >
                         <Link to={obj.toLink}>{obj.name}</Link>
