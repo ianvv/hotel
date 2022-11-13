@@ -5,32 +5,32 @@ import {Slider} from "@mui/material";
 import {SingleValue} from "react-select/dist/declarations/src/types";
 
 import Title from "../Title/Title";
-import {RoomItem, setSortedRooms} from "../../redux/slices/RoomsSlice";
+import {TRoomItem, setSortedRooms} from "../../redux/slices/RoomsSlice";
 import {filterSelector} from "../../redux/slices/FilterSlice";
 import {useAppDispatch} from "../../redux/store";
 import {getUnique} from "../../utilities/sideFunctions";
 import s from './roomFilter.module.scss';
 
 
-type CapacityOption = {
+type TCapacityOption = {
     label: number;
     value: number;
 }
 
-export interface RoomFilterProps {
-    rooms: RoomItem[];
+export interface IRoomFilterProps {
+    rooms: TRoomItem[];
 }
 
 // The best way to implement this would be to use
 // an API request with parameters, but I couldn't
 // do it properly because I don't have a good enough API
 // so I had to use the array filter method
-export const RoomFilter: React.FC<RoomFilterProps> = ({rooms}) => {
+export const RoomFilter: React.FC<IRoomFilterProps> = ({rooms}) => {
 
     const dispatch = useAppDispatch();
     const {minPrice, maxPrice, minSize, maxSize} = useSelector(filterSelector);
 
-    const [capacityOption, setCapacityOption] = useState<CapacityOption | null>(null);
+    const [capacityOption, setCapacityOption] = useState<TCapacityOption | null>(null);
     const [capacity, setCapacity] = useState(0);
     const [sliderValue, setSliderValue] = useState(minPrice);
     const [minSizeValue, setMinSizeValue] = useState(minSize);
@@ -55,7 +55,7 @@ export const RoomFilter: React.FC<RoomFilterProps> = ({rooms}) => {
         && !pets
         && !smoking
 
-    const capacityChangeHandler = (option: SingleValue<CapacityOption>) => {
+    const capacityChangeHandler = (option: SingleValue<TCapacityOption>) => {
         setCapacityOption(option);
         setCapacity(option ? option.value : 0);
     }
@@ -92,7 +92,7 @@ export const RoomFilter: React.FC<RoomFilterProps> = ({rooms}) => {
 
     let guests = getUnique(rooms, 'capacity');
 
-    const options: CapacityOption[] = guests.map(item => {
+    const options: TCapacityOption[] = guests.map(item => {
         return { label: Number(item), value: Number(item) };
     })
 

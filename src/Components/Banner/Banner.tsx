@@ -2,13 +2,13 @@ import React from 'react';
 import s from './banner.module.scss';
 
 
-type BannerProps = {
+type TBannerProps = {
     children: React.ReactNode,
     title: string,
     subtitle?: string,
 }
 
-const Banner: React.FC<BannerProps> = ({children, title, subtitle}) => {
+const Banner: React.FC<TBannerProps> = ({children, title, subtitle}) => {
 
     return (
         <div className={s.banner}>

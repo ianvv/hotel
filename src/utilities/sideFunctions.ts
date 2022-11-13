@@ -1,6 +1,6 @@
-import { RoomItem } from "../redux/slices/RoomsSlice"
+import { TRoomItem } from "../redux/slices/RoomsSlice"
 
 
-export const getUnique = (items: RoomItem[], value: keyof RoomItem) => {
+export const getUnique = (items: TRoomItem[], value: keyof TRoomItem) => {
     return [...new Set(items.map(item => item[value]))]
 }

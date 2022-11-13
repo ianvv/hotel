@@ -3,7 +3,7 @@ import axios from "axios";
 import {RootState} from "../store";
 
 
-export type RoomItem = {
+export type TRoomItem = {
     id: number;
     name: string;
     slug: string;
@@ -24,7 +24,7 @@ export const fetchRooms = createAsyncThunk(
     'rooms/fetchRooms',
     async () => {
         const {data} = await axios.get(`https://6316727782797be77fe57fda.mockapi.io/rooms`);
-        return data as RoomItem[];
+        return data as TRoomItem[];
     }
 );
 
@@ -32,39 +32,39 @@ export const fetchRoom = createAsyncThunk(
     'rooms/fetchRoom',
     async (slug: string) => {
         const {data} = await axios.get(`https://6316727782797be77fe57fda.mockapi.io/rooms?slug=${slug}`);
-        return data as RoomItem[];
+        return data as TRoomItem[];
     }
 );
 
-export enum Status {
+export enum EStatus {
     LOADING = 'loading',
     SUCCESS = 'success',
     ERROR = 'error'
 }
 
 interface IRoomsSliceState {
-    rooms: RoomItem[];
-    sortedRooms: RoomItem[];
-    featuredRooms: RoomItem[];
+    rooms: TRoomItem[];
+    sortedRooms: TRoomItem[];
+    featuredRooms: TRoomItem[];
     status: string;
     maxPrice: number;
-    singleRoom: RoomItem;
+    singleRoom: TRoomItem;
 }
 
 const initialState: IRoomsSliceState = {
     rooms: [],
     sortedRooms: [],
     featuredRooms: [],
-    status: Status.LOADING,
+    status: EStatus.LOADING,
     maxPrice: 0,
-    singleRoom: {} as RoomItem,
+    singleRoom: {} as TRoomItem,
 };
 
 const roomsSlice = createSlice({
     name: 'rooms',
     initialState,
     reducers: {
-        setSortedRooms(state, action: PayloadAction<RoomItem[]>) {
+        setSortedRooms(state, action: PayloadAction<TRoomItem[]>) {
             state.sortedRooms = action.payload;
         }
     },
@@ -73,18 +73,18 @@ const roomsSlice = createSlice({
         //------------- asyncThunk #1 fetchRooms -------------//
 
         builder.addCase(fetchRooms.pending, (state) => {
-            state.status = Status.LOADING;
+            state.status = EStatus.LOADING;
             state.rooms = [];
         });
 
         builder.addCase(fetchRooms.fulfilled, (state, action) => {
-            state.status = Status.SUCCESS;
+            state.status = EStatus.SUCCESS;
             state.rooms = action.payload;
             state.sortedRooms = action.payload;
         });
 
         builder.addCase(fetchRooms.rejected, (state) => {
-            state.status = Status.ERROR;
+            state.status = EStatus.ERROR;
             alert('~~~~~~~ERROR~~~~~~~ ' + '|| fetchRooms');
             state.rooms = [];
         });
@@ -92,16 +92,16 @@ const roomsSlice = createSlice({
         //------------- asyncThunk #2 fetchRoom -------------//
 
         builder.addCase(fetchRoom.pending, (state) => {
-            state.status = Status.LOADING;
+            state.status = EStatus.LOADING;
         });
 
         builder.addCase(fetchRoom.fulfilled, (state, action) => {
             state.singleRoom = action.payload[0];
-            state.status = Status.SUCCESS;
+            state.status = EStatus.SUCCESS;
         });
 
         builder.addCase(fetchRoom.rejected, (state) => {
-            state.status = Status.ERROR;
+            state.status = EStatus.ERROR;
             alert('~~~~~~~FETCHROOM  ERROR~~~~~~~');
         });
     }

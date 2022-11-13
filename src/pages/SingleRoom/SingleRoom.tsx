@@ -3,14 +3,14 @@ import {Link, useParams} from 'react-router-dom';
 import {useSelector} from "react-redux";
 
 import Loading from "../../Components/Loading/Loading";
-import {fetchRoom, roomsSelector, Status} from "../../redux/slices/RoomsSlice";
+import {fetchRoom, roomsSelector, EStatus} from "../../redux/slices/RoomsSlice";
 import {useAppDispatch} from '../../redux/store';
 import {StyledWrapper} from "../../assets/styles/styledComponents";
 import s from './singleRoom.module.scss';
 import styles from '../../assets/styles/commonStyles.module.scss';
 
 
-const SingleRoom = () => {
+const SingleRoom: React.FC = () => {
 
     const {singleRoom, status} = useSelector(roomsSelector);
     const dispatch = useAppDispatch();
@@ -28,7 +28,7 @@ const SingleRoom = () => {
     return (
         <>
             {
-                status === Status.LOADING
+                status === EStatus.LOADING
                     ? <Loading text='Room data loading...'/>
                     : <div>
                         <StyledWrapper images={images}>

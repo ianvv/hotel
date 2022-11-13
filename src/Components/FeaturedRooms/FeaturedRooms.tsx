@@ -5,11 +5,11 @@ import Title from "../Title/Title";
 import RoomCard from "../RoomCard/RoomCard";
 import Loading from "../Loading/Loading";
 import {useAppDispatch} from "../../redux/store";
-import {fetchRooms, RoomItem, roomsSelector} from "../../redux/slices/RoomsSlice";
+import {fetchRooms, TRoomItem, roomsSelector} from "../../redux/slices/RoomsSlice";
 import s from './featuredRooms.module.scss';
 
 
-const FeaturedRooms = () => {
+const FeaturedRooms: React.FC = () => {
 
     const dispatch = useAppDispatch();
     const {rooms} = useSelector(roomsSelector);
@@ -21,7 +21,7 @@ const FeaturedRooms = () => {
         getRooms();
     }, []);
 
-    const featuredRoomsArray: RoomItem[] = [];
+    const featuredRoomsArray: TRoomItem[] = [];
 
     let nums = new Set<number>();
 

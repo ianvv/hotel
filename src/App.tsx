@@ -1,5 +1,5 @@
-import {Routes, Route} from "react-router-dom";
-import React, {ReactNode} from 'react';
+import React from 'react';
+import {RouteObject, useRoutes} from "react-router-dom";
 
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
@@ -8,12 +8,9 @@ import Error from "./pages/Error";
 import MainLayout from "./layouts/MainLayout";
 
 
-type RouteItem = {
-    path: string;
-    element: ReactNode;
-}
+type TRouteItem = RouteObject;
 
-const routes: RouteItem[] = [
+const routes: TRouteItem[] = [
     {
         path: '',
         element: <Home/>
@@ -34,19 +31,7 @@ const routes: RouteItem[] = [
 
 
 function App() {
-    return (
-        <Routes>
-            <Route path='/' element={<MainLayout/>}>
-                {
-                    routes.map((route, index) => {
-                        return (
-                            <Route key={index} {...route}/>
-                        )
-                    })
-                }
-            </Route>
-        </Routes>
-    );
+    return useRoutes([{path: "/", element: <MainLayout/>, children: routes}]);
 }
 
 export default App;

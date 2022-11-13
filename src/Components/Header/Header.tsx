@@ -5,12 +5,12 @@ import {Sling as Hamburger} from 'hamburger-react';
 import s from './header.module.scss';
 
 
-type NavItem = {
-    name: string,
-    toLink: string
+type TNavItem = {
+    name: string;
+    toLink: string;
 }
 
-const navItems: NavItem[] = [
+const navItems: TNavItem[] = [
     {name: 'Home', toLink: '/'},
     {name: 'Rooms', toLink: '/rooms'},
 ];

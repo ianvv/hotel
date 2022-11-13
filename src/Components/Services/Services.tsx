@@ -5,13 +5,13 @@ import Title from "../Title/Title";
 import s from './services.module.scss';
 
 
-type IServicesItem = {
+type TServicesItem = {
     icon: ReactNode;
     title: string;
     info: string;
 }
 
-const services: IServicesItem[] = [
+const services: TServicesItem[] = [
     {
         icon: <FaCocktail/>,
         title: 'Free cocktails',
