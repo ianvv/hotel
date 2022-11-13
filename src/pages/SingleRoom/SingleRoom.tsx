@@ -10,7 +10,7 @@ import s from './singleRoom.module.scss';
 import styles from '../../assets/styles/commonStyles.module.scss';
 
 
-const SingleRoom = () => {
+const SingleRoom: React.FC = () => {
 
     const {singleRoom, status} = useSelector(roomsSelector);
     const dispatch = useAppDispatch();
