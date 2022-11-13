@@ -1,4 +1,4 @@
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, RouteProps} from "react-router-dom";
 import React, {ReactNode} from 'react';
 
 import Home from "./pages/Home";
@@ -7,13 +7,10 @@ import SingleRoom from "./pages/SingleRoom/SingleRoom";
 import Error from "./pages/Error";
 import MainLayout from "./layouts/MainLayout";
 
+/** Думаю, лучше использовать родные пропсы Route */
+type TRouteItem = RouteProps
 
-type RouteItem = {
-    path: string;
-    element: ReactNode;
-}
-
-const routes: RouteItem[] = [
+const routes: TRouteItem[] = [
     {
         path: '',
         element: <Home/>
