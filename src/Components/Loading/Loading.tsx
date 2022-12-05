@@ -14,7 +14,7 @@ const Loading: React.FC<ILoadingProps> = ({text}) => {
     return (
         <div className={s.loadingArrow}>
             <h4>{text}</h4>
-            <img src={loadingArrow} alt=""/>
+            <img src={loadingArrow} alt="loading image"/>
         </div>
     );
 }

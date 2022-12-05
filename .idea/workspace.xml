@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fb871908-4116-4024-9f9d-d66cdaa4fc4a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/@types/assets.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/@types/assets.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Banner/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Banner/Banner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/FeaturedRooms/FeaturedRooms.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/FeaturedRooms/FeaturedRooms.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/RoomFilter/RoomFilter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RoomFilter/RoomFilter.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/RoomsList/RoomsList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/RoomsList/RoomsList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/Services/Services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Services/Services.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/SingleRoom/SingleRoom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SingleRoom/SingleRoom.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slices/RoomsSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slices/RoomsSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/sideFunctions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utilities/sideFunctions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +42,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jsx.switch.disabled&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MI/WebstormProjects/hotel/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MI/WebstormProjects/training-app-r&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;SCSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -91,7 +84,11 @@
       <workItem from="1667697475485" duration="32380000" />
       <workItem from="1668035723346" duration="39107000" />
       <workItem from="1668292951384" duration="292000" />
-      <workItem from="1668336804186" duration="1999000" />
+      <workItem from="1668336804186" duration="4251000" />
+      <workItem from="1668547082132" duration="6888000" />
+      <workItem from="1668990478984" duration="7550000" />
+      <workItem from="1669418378585" duration="2065000" />
+      <workItem from="1670212111014" duration="3889000" />
     </task>
     <servers />
   </component>

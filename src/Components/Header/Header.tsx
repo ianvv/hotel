@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {memo, useEffect, useRef, useState} from "react";
 import {Link} from 'react-router-dom';
 import {Sling as Hamburger} from 'hamburger-react';
 
@@ -17,10 +17,10 @@ const navItems: TNavItem[] = [
 
 type MenuClick = MouseEvent & {
     path: Node[];
-};
+}
 
 
-const Header: React.FC = () => {
+const Header: React.FC = memo( () => {
 
     const [isOpen, setOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
@@ -83,6 +83,6 @@ const Header: React.FC = () => {
             </ul>
         </div>
     );
-}
+})
 
 export default Header;

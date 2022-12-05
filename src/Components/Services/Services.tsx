@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, {memo, ReactNode } from 'react';
 import {FaCocktail, FaHiking, FaShuttleVan, FaBeer} from 'react-icons/fa';
 
 import Title from "../Title/Title";
@@ -35,7 +35,7 @@ const services: TServicesItem[] = [
 ];
 
 
-const Services: React.FC = () => {
+const Services: React.FC = memo(() => {
 
     return (
         <section className={s.services}>
@@ -55,6 +55,6 @@ const Services: React.FC = () => {
             </div>
         </section>
     );
-}
+})
 
 export default Services;

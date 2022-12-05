@@ -3,10 +3,11 @@ import s from './banner.module.scss';
 
 
 type TBannerProps = {
-    children: React.ReactNode,
-    title: string,
-    subtitle?: string,
+    children: React.ReactNode;
+    title: string;
+    subtitle?: string;
 }
+
 
 const Banner: React.FC<TBannerProps> = ({children, title, subtitle}) => {
 
