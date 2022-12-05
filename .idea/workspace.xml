@@ -6,6 +6,8 @@
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Banner/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Banner/Banner.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Loading/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Loading/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Services/Services.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Services/Services.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +90,7 @@
       <workItem from="1668547082132" duration="6888000" />
       <workItem from="1668990478984" duration="7550000" />
       <workItem from="1669418378585" duration="2065000" />
-      <workItem from="1670212111014" duration="3889000" />
+      <workItem from="1670212111014" duration="4557000" />
     </task>
     <servers />
   </component>
