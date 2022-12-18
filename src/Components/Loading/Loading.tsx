@@ -1,22 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import loadingArrow from '../../assets/img/gif/loading-arrow.gif';
-import s from './loading.module.scss';
-
+import loadingArrow from "../../assets/img/gif/loading-arrow.gif";
+import s from "./loading.module.scss";
 
 interface ILoadingProps {
-    text: string;
+  text: string;
 }
 
-
-const Loading: React.FC<ILoadingProps> = ({text}) => {
-
-    return (
-        <div className={s.loadingArrow}>
-            <h4>{text}</h4>
-            <img src={loadingArrow} alt="loading image"/>
-        </div>
-    );
-}
+const Loading: React.FC<ILoadingProps> = ({ text }) => {
+  return (
+    <div className={s.loadingArrow}>
+      <h4>{text}</h4>
+      <img src={loadingArrow} alt="loading" />
+    </div>
+  );
+};
 
 export default Loading;
